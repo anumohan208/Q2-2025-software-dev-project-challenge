@@ -25,6 +25,11 @@ public class OrderController {
         return orderRepository.findAll();
     }
 
+    @GetMapping("/top10")
+    public List<Order> getTop10Orders() {
+        return orderRepository.findTop10ByOrderByTotalAmountDesc();
+    }
+
     @PostMapping("/upload-csv")
     public ResponseEntity<String> uploadCsv(@RequestParam("file") MultipartFile file) {
         try {
